@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
   }
@@ -50,16 +51,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('RAG with Flutter'),
+        title: Text('Chatbot'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+           
+            Expanded(
+              child: SingleChildScrollView(
+                child: Text(_result),
+              ),
+            ),
+
             TextField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: 'Enter your query',
+                hintText: 'What is your query?',
               ),
             ),
             SizedBox(height: 20),
@@ -68,11 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('Search'),
             ),
             SizedBox(height: 20),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Text(_result),
-              ),
-            ),
           ],
         ),
       ),
